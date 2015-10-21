@@ -14,23 +14,27 @@ From a terminal window, enter:
 
 Postgres is a database which will exist in any regular development environment, but has to be initialized in Mac OS.
 
+
 #####Create Virtual Environment:
 From a terminal window in the directory where you want the Virtual Environment to exist, type:
   `python3 -m venv [your virtual environment name]`
 
---> Virtual environments are used to isolate the set of tools used by your app and the set of risks that opens up due to running your app, so that it is compartmentalized in your computer.
+Virtual environments are used to isolate the set of tools used by your app and the set of risks that opens up due to running your app, so that it is compartmentalized in your computer.
+
 
 #####Run Virtual Environment:
 From the same terminal window where your venv folder is, type:
 
   `source [your virtual environment name]/bin/activate`
 
-You will know its working when your terminal path starts with `"([your virtual environment name])"`
+You will know its working when your terminal path starts with `([your virtual environment name])`
+
 
 #####Stop Virtual Environment:
 From a terminal window where your venv folder is, type:
 
   `deactivate`
+
 
 #####Check Virtual Environment Installations:
 From a terminal window with your virtual environment activated, type:
@@ -43,6 +47,7 @@ Or:
 
 pip3 always uses python3, whereas pip will use the default version of python on the OS.
 
+
 #####Install Django:
 From a terminal window with your virtual environment activated, type:
 
@@ -53,6 +58,7 @@ This is usually not necessary, as django-toolbelt will also install django:
   `pip3 install django-toolbelt`
 
 Other tools, if needed, can also be installed this way.
+
 
 #####Saving a virtual environment's installed programs:
 From a terminal window with your virtual environment activated, type:
@@ -65,6 +71,7 @@ This can then be used to install programs with:
 
 '-r' is the flag for a set of requirements in pip3 install
 
+
 #####Starting a Django Project:
 From a terminal window with your virtual environment activated, type:
 
@@ -72,12 +79,14 @@ From a terminal window with your virtual environment activated, type:
 
 Project name can be any combination of numbers, letters, and underscores
 
+
 #####Starting an Application:
 From a terminal window with your virtual environment activated, type:
 
   `python3 manage.py startapp [app name]`
 
 App name can be any combination of numbers, letters, and underscores, and cannot be the same as the project name or another app.
+
 
 #####Updating Settings:
 
@@ -102,12 +111,14 @@ App name can be any combination of numbers, letters, and underscores, and cannot
   	}
   ```
 
+
 #####Create the database in Postgres:
 From a terminal window with your virtual environment activated, type:
 
   `createdb [name of database]`
 
 This initializes the database within Postgres that will be used for your project.
+
 
 #####Delete the database in Postgres:
 From a terminal window with your virtual environment activated, type:
@@ -127,6 +138,7 @@ Alternatively, this file can be copied over from the main project folder:
 
   `cp [project name]/urls.py [app name]`
 
+
 #####Create directory for html templates in new app folder:
 From the new app folder with virtual environment activated, type:
   ```bash
@@ -139,6 +151,7 @@ Move into this directory and create the necessary html files:
   cd [app name]
   touch index.html
   ```
+
 
 #####Create forms.py in the new app folder:
 From the new app folder with virtual environment activated, type:
@@ -156,6 +169,7 @@ From a terminal window in the root folder with the virtual environment activated
   python3 manage.py migrate [app name]
   ```
 For both of these, the [app name] is optional - if it is provided it will makemigrations and migrate only that app, and if not, it will do the same for all apps int he project.
+
 
 #####Run the server:
 From a terminal window in the root folder with the virtual environment activated, type:
@@ -194,6 +208,7 @@ E.g.:
   user = models.ForeignKey('users.User')
   ```
 The field in the database is 'user_id'.
+
 
 #####Forms:
 The forms.py file should always be headed by:
@@ -255,6 +270,7 @@ The second argument is the name of the view, and the third is the name of the th
 The name is often the same as the name of the page.
 Always use a comma after every entry in urlpatterns = []
 
+
 #####Create View in views.py:
 The views.py file should always be headed by:
   ```python
@@ -295,6 +311,7 @@ At the end of the view function, the redirect syntax is:
   ```
 Redirect sends the process back through the urls -> views process to end with a rendered template.
 
+
 #####HTML Templates:
 Templates are written in HTML, but can include Python variables for added functionality.
 
@@ -313,7 +330,9 @@ Each template should begin as:
   </html>
   ```
 
+
 ######Using Variables in HTML Templates:
+
 
 ######Using Forms in HTML Templates:
 
