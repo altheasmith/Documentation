@@ -2,35 +2,36 @@
 
 --------------------------------------------------------------------------------
 
-Initial Setup:
+##Initial Setup:
 
-Start Postgres from terminal (only required after reboot since I closed the terminal window I used to install it initially.):
+###Start Postgres from terminal:
+(only required after reboot since I closed the terminal window I used to install it initially.)
 From a terminal window, enter:
   `pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start`
 Postgres is a database which will exist in any regular development environment, but has to be initialized in Mac OS.
 
-Create Virtual Environment:
+###Create Virtual Environment:
 From a terminal window in the directory where you want the Virtual Environment to exist, type:
   `python3 -m venv [your virtual environment name]``
 --> Virtual environments are used to isolate the set of tools used by your app and the set of risks that opens up due to running your app, so that it is compartmentalized in your computer.
 
-Run Virtual Environment:
+###Run Virtual Environment:
 From the same terminal window where your venv folder is, type:
   `source [your virtual environment name]/bin/activate`
 You will know its working when your terminal path starts with "([your virtual environment name])"
 
-Stop Virtual Environment:
+###Stop Virtual Environment:
 From a terminal window where your venv folder is, type:
   `deactivate`
 
-Check Virtual Environment Installations:
+###Check Virtual Environment Installations:
 From a terminal window with your virtual environment activated, type:
   `pip freeze`
 Or
   `pip3 freeze`
 pip3 always uses python3, whereas pip will use the default version of python on the OS.
 
-Install Django:
+###Install Django:
 From a terminal window with your virtual environment activated, type:
   `pip3 install django`
 This is usually not necessary, as django-toolbelt will also install django:
@@ -44,21 +45,21 @@ This can then be used to install programs with:
   `pip3 install -r [name of requirements doc].txt`
 '-r' is the flag for a set of requirements in pip3 install
 
-Starting a Django Project:
+###Starting a Django Project:
 From a terminal window with your virtual environment activated, type:
   `django-admin startproject [project name]`
 Project name can be any combination of numbers, letters, and underscores
 
-Starting an Application:
+###Starting an Application:
 From a terminal window with your virtual environment activated, type:
   `python3 manage.py startapp [app name]`
 App name can be any combination of numbers, letters, and underscores, and cannot be the same as the project name or another app.
 
-Updating Settings:
+###Updating Settings:
 
-  INSTALLED_APPS
-  Open the settings.py folder
-  Add [app name] to the INSTALLED_APPS list, including a trailing comma
+  INSTALLED_APPS:
+  Open the settings.py folder.
+  Add [app name] to the INSTALLED_APPS list, including a trailing comma.
 
   ```python
   DATABASES:
@@ -75,26 +76,26 @@ Updating Settings:
   	}
   ```
 
-Create the database in Postgres:
+###Create the database in Postgres:
 From a terminal window with your virtual environment activated, type:
   `createdb [name of database]``
 This initializes the database within Postgres that will be used for your project.
 
-Delete the database in Postgres:
+###Delete the database in Postgres:
 From a terminal window with your virtual environment activated, type:
   `dropdb [name of database]``
 
 --------------------------------------------------------------------------------
 
-Create necessary files and directories:
+##Create necessary files and directories:
 
-Create urls.py in the new app folder:
+###Create urls.py in the new app folder:
 From the new app folder with virtual environment activated, type:
   `touch urls.py`
 Alternatively, this file can be copied over from the main project folder:
   `cp [project name]/urls.py [app name]`
 
-Create directory for html templates in new app folder:
+###Create directory for html templates in new app folder:
 From the new app folder with virtual environment activated, type:
   `mkdir templates`
   `cd templates`
@@ -103,21 +104,21 @@ Move into this directory and create the necessary html files:
   `cd [app name]`
   `touch index.html`
 
-Create forms.py in the new app folder:
+###Create forms.py in the new app folder:
 From the new app folder with virtual environment activated, type:
   `touch forms.py`
 
 --------------------------------------------------------------------------------
 
-Migrate & Run:
+##Migrate & Run:
 
-Migrate, once the model is created:
+###Migrate, once the model is created:
 From a terminal window in the root folder with the virtual environment activated, type:
   `python3 manage.py makemigrations [app name]`
   `python3 manage.py migrate [app name]`
 For both of these, the [app name] is optional - if it is provided it will makemigrations and migrate only that app, and if not, it will do the same for all apps int he project.
 
-Run the server:
+###Run the server:
 From a terminal window in the root folder with the virtual environment activated, type:
   `python3 manage.py runserver`
 `Ctrl + click` on URL indicated in the set up will navigate to the page
@@ -126,9 +127,9 @@ To make edits with the server running, open another terminal window to the proje
 
 --------------------------------------------------------------------------------
 
-Models & Forms:
+##Models & Forms:
 
-Models:
+###Models:
 The models.py file should always be headed by:
   ```python
   from django.db import models
@@ -150,7 +151,7 @@ E.g.
   ```
 The field in the database is 'user_id'.
 
-Forms:
+###Forms:
 The forms.py file should always be headed by:
   ```python
   from django.forms import ModelForm
@@ -182,9 +183,9 @@ For example:
 
 --------------------------------------------------------------------------------
 
-Server Flow:
+##Server Flow:
 
-Create URL in urls.py:
+###Create URL in urls.py:
 The urls.py should include:
   ```python
   from django.conf.urls import include, url
@@ -208,7 +209,7 @@ The second argument is the name of the view, and the third is the name of the th
 The name is often the same as the name of the page.
 Always use a comma after every entry in urlpatterns = []
 
-Create View in views.py:
+###Create View in views.py:
 The views.py file should always be headed by:
   ```python
   from django.shortcuts import render, redirect
@@ -230,20 +231,20 @@ Render is used for running view functions straight to html templates.
 Redirect is used when an action has been taken on the page.
 This requires the user to be redirected to another page after the action is complete.
 
-  Render:
+####Render:
   At the end of the view function, the render syntax is:
     ```python
     return render(request, '[app name]/[template name].html', {context dictionary: of passed parameters})
     ```
 
-  Redirect:
+####Redirect:
   At the end of the view function, the redirect syntax is:
     ```python
     return redirect('redirectto/thisurl')
     ```
   Redirect sends the process back through the urls -> views process to end with a rendered template.
 
-HTML Templates:
+###HTML Templates:
 Templates are written in HTML, but can include Python variables for added functionality.
 These variables are passed in the view functions as the third argument: the dictionary of parameters.
 Each template should begin as:
@@ -259,12 +260,9 @@ Each template should begin as:
   </html>
   ```
 
-Using Variables in HTML Templates:
+####Using Variables in HTML Templates:
 
-Using Forms in HTML Templates:
+####Using Forms in HTML Templates:
 
 
 --------------------------------------------------------------------------------
-
-
-ZEAL: offline documentation
