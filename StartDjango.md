@@ -56,11 +56,11 @@ App name can be any combination of numbers, letters, and underscores, and cannot
 
 Updating Settings:
 
-  ```python
   INSTALLED_APPS
   Open the settings.py folder
-  Add [app name] to the INSTALLED_APPS list
+  Add [app name] to the INSTALLED_APPS list, including a trailing comma
 
+  ```python
   DATABASES:
   Edit DATABASES to your local Postgres server:
     DATABASES = {
@@ -73,7 +73,7 @@ Updating Settings:
   		'PORT': '5432',
   		}
   	}
-    ```
+  ```
 
 Create the database in Postgres:
 From a terminal window with your virtual environment activated, type:
