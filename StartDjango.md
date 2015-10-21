@@ -1,4 +1,4 @@
-Key: *Questions*
+Key: (*Questions*)
 
 --------------------------------------------------------------------------------
 
@@ -8,15 +8,15 @@ Key: *Questions*
 (Only required after reboot since I closed the terminal window I used to install it initially.)
 
 From a terminal window, enter:
-  ```bash
-  pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
-  ```
+
+  `pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start`
 
 Postgres is a database which will exist in any regular development environment, but has to be initialized in Mac OS.
 
 
 #####Create Virtual Environment:
 From a terminal window in the directory where you want the Virtual Environment to exist, type:
+
   `python3 -m venv [your virtual environment name]`
 
 Virtual environments are used to isolate the set of tools used by your app and the set of risks that opens up due to running your app, so that it is compartmentalized in your computer.
