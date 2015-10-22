@@ -104,6 +104,7 @@ App name can be any combination of numbers, letters, and underscores, and cannot
 
 
 #####Updating Settings:
+There are many more settings applied to your project than what is in the settings.py folder of your project. This file is used to overwrite the settings you are changing from their default states/values.
 
   `INSTALLED_APPS:`
 
@@ -363,6 +364,8 @@ Each template should begin as:
 - Initialize in context dictionary in render()
 
 ######Hash Password with BCrypt:
+This information is from [Django Docs on Password Management](https://docs.djangoproject.com/en/1.8/topics/auth/passwords/#module-django.contrib.auth.hashers).
+
 From the terminal with your Virtual Environment running, install the bcrypt library with:
 
 `pip3 install django[bcrypt]`
@@ -379,4 +382,14 @@ PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.CryptPasswordHasher',
 )
 ```
-This modifies the existing PASSWORD_HASHERS to put the BCrypt entries first, thus making them the default.
+This modifies the existing PASSWORD_HASHERS to put the BCrypt entries first, thus making them the default. The others are still necessary so the database can check/upgrade existing passwords with them.
+
+Once complete, this should upgrade the existing passwords in your database. *Should it? It doesn't*
+
+`django.contrib.auth.hashers` is the module that includes the functions necessary to create a hash as a password, and check the password once it's created in order to verify the hashed password with the plaintext version.
+
+To use the moduel, add the following to the top of the file you're using to create your User instances with their passwords as an attribute:
+
+`from django.contrib.auth.hashers import make_password, check_password`
+
+Use the make_password() function in your model or elsewhere to save passwords as a hash instead of plaintext.
