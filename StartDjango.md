@@ -1,3 +1,5 @@
+###Guide to Creating a Django Project (OS X)
+
 Key: (*Questions*)
 
 --------------------------------------------------------------------------------
@@ -13,6 +15,13 @@ From a terminal window, enter:
 
 Postgres is a database which will exist in any regular development environment, but has to be initialized in Mac OS.
 
+######Configure Postgres to start Automagically:
+From [this site](http://exponential.io/blog/2015/02/21/install-postgresql-on-mac-os-x-via-brew/)
+  ```bash
+  mkdir -p ~/Library/LaunchAgents
+  ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+  ```
 
 #####Create Virtual Environment:
 From a terminal window in the directory where you want the Virtual Environment to exist, type:
@@ -81,7 +90,13 @@ Project name can be any combination of numbers, letters, and underscores
 
 
 #####Starting an Application:
-From a terminal window with your virtual environment activated, type:
+Navigate into the project folder with:
+
+  `cd [project name]`
+
+This directory contains the 'manage.py' file that you need to execute the command to start an app.
+
+From this terminal window, type:
 
   `python3 manage.py startapp [app name]`
 
@@ -94,7 +109,7 @@ App name can be any combination of numbers, letters, and underscores, and cannot
 
   Open the settings.py folder.
 
-  Add [app name] to the INSTALLED_APPS list and include a trailing comma.
+  Add '[app name]' to the INSTALLED_APPS list and include a trailing comma.
 
   ```python
   DATABASES:
@@ -160,30 +175,6 @@ From the new app folder with virtual environment activated, type:
 
 --------------------------------------------------------------------------------
 
-####Migrate & Run:
-
-#####Migrate, once the model is created:
-From a terminal window in the root folder with the virtual environment activated, type:
-  ```bash
-  python3 manage.py makemigrations [app name]
-  python3 manage.py migrate [app name]
-  ```
-For both of these, the [app name] is optional - if it is provided it will makemigrations and migrate only that app, and if not, it will do the same for all apps int he project.
-
-
-#####Run the server:
-From a terminal window in the root folder with the virtual environment activated, type:
-
-  `python3 manage.py runserver`
-
-`Ctrl + click` on URL indicated in the set up will navigate to the page.
-
-`Ctrl + C` will stop the server.
-
-To make edits with the server running, open another terminal window to the project directory.
-
---------------------------------------------------------------------------------
-
 ####Models & Forms:
 
 #####Models:
@@ -229,7 +220,7 @@ Their structure is stored in a secondary class: class Meta *(WHAT is Meta and wh
 The fields included in the form are:
   1. The model being used to build the form;
   2. The fields or attributes of the model class;
-  3. Any widgets to be used in the form, e.g., HiddenInput() *(Still can't get HiddenInput working)*
+  3. Any widgets to be used in the form, e.g., HiddenInput()
 
 For example:
   ```python
@@ -241,6 +232,30 @@ For example:
             'user': HiddenInput(),
         }
   ```
+
+--------------------------------------------------------------------------------
+
+####Migrate & Run:
+
+#####Once the model is created, Migrate:
+From a terminal window in the root folder with the virtual environment activated, type:
+  ```bash
+  python3 manage.py makemigrations [app name]
+  python3 manage.py migrate [app name]
+  ```
+For both of these, the [app name] is optional - if it is provided it will makemigrations and migrate only that app, and if not, it will do the same for all apps int he project.
+
+
+#####Run the server:
+From a terminal window in the root folder with the virtual environment activated, type:
+
+  `python3 manage.py runserver`
+
+`Ctrl + click` on URL indicated in the set up will navigate to the page.
+
+`Ctrl + C` will stop the server.
+
+To make edits with the server running, open another terminal window to the project directory.
 
 --------------------------------------------------------------------------------
 
@@ -309,7 +324,7 @@ At the end of the view function, the redirect syntax is:
   ```python
   return redirect('redirectto/thisurl')
   ```
-Redirect sends the process back through the urls -> views process to end with a rendered template.
+Instead of rendering a template directly, redirect sends the process back through the urls -> views process to end with a rendered template.
 
 
 #####HTML Templates:
@@ -338,3 +353,9 @@ Each template should begin as:
 
 
 --------------------------------------------------------------------------------
+
+####Other Specifics:
+
+######HiddenInput:
+- widget in Form
+- Initialize in context dictionary in render()
