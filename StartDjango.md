@@ -395,3 +395,9 @@ To use the module, add the following to the top of the file you're using to crea
 `from django.contrib.auth.hashers import make_password, check_password`
 
 Use the make_password() function in your model or elsewhere to save passwords as a hash instead of plaintext.
+
+  `make_password([plaintext password])`
+
+Use the check_password() function to validate an entered password against its hashed equivalent.
+
+  `check_password([entered password],[stored hashed password for user])`
