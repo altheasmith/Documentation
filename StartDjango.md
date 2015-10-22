@@ -1,10 +1,8 @@
 ###Guide to Creating a Django Project (OS X)
 
-```md
 Key:
 *(?Questions?)*
-#######Section In Progress
-```
+######Section In Progress
 
 --------------------------------------------------------------------------------
 
