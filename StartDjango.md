@@ -168,30 +168,6 @@ From the new app folder with virtual environment activated, type:
 
 --------------------------------------------------------------------------------
 
-####Migrate & Run:
-
-#####Migrate, once the model is created:
-From a terminal window in the root folder with the virtual environment activated, type:
-  ```bash
-  python3 manage.py makemigrations [app name]
-  python3 manage.py migrate [app name]
-  ```
-For both of these, the [app name] is optional - if it is provided it will makemigrations and migrate only that app, and if not, it will do the same for all apps int he project.
-
-
-#####Run the server:
-From a terminal window in the root folder with the virtual environment activated, type:
-
-  `python3 manage.py runserver`
-
-`Ctrl + click` on URL indicated in the set up will navigate to the page.
-
-`Ctrl + C` will stop the server.
-
-To make edits with the server running, open another terminal window to the project directory.
-
---------------------------------------------------------------------------------
-
 ####Models & Forms:
 
 #####Models:
@@ -249,6 +225,30 @@ For example:
             'user': HiddenInput(),
         }
   ```
+  
+--------------------------------------------------------------------------------
+
+####Migrate & Run:
+
+#####Once the model is created, Migrate:
+From a terminal window in the root folder with the virtual environment activated, type:
+  ```bash
+  python3 manage.py makemigrations [app name]
+  python3 manage.py migrate [app name]
+  ```
+For both of these, the [app name] is optional - if it is provided it will makemigrations and migrate only that app, and if not, it will do the same for all apps int he project.
+
+
+#####Run the server:
+From a terminal window in the root folder with the virtual environment activated, type:
+
+  `python3 manage.py runserver`
+
+`Ctrl + click` on URL indicated in the set up will navigate to the page.
+
+`Ctrl + C` will stop the server.
+
+To make edits with the server running, open another terminal window to the project directory.
 
 --------------------------------------------------------------------------------
 
