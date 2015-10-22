@@ -15,8 +15,8 @@ From a terminal window, enter:
 
 Postgres is a database which will exist in any regular development environment, but has to be initialized in Mac OS.
 
-######Configure Postgres to start Automagically:
-From [this site](http://exponential.io/blog/2015/02/21/install-postgresql-on-mac-os-x-via-brew/)
+######Configure Postgres to start Automagically on boot:
+From [this site](http://exponential.io/blog/2015/02/21/install-postgresql-on-mac-os-x-via-brew/):
   ```bash
   mkdir -p ~/Library/LaunchAgents
   ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
@@ -62,7 +62,7 @@ From a terminal window with your virtual environment activated, type:
 
   `pip3 install django`
 
-This is usually not necessary, as django-toolbelt will also install django:
+This is not necessary, as django-toolbelt will also install django:
 
   `pip3 install django-toolbelt`
 
@@ -104,6 +104,7 @@ App name can be any combination of numbers, letters, and underscores, and cannot
 
 
 #####Updating Settings:
+There are many more settings applied to your project than what is in the settings.py folder of your project. This file is used to overwrite the settings you are changing from their default states/values.
 
   `INSTALLED_APPS:`
 
@@ -347,10 +348,12 @@ Each template should begin as:
 
 
 ######Using Variables in HTML Templates:
-
+- Variables are called with {{[variable name]}}
+- Variables are pulled from HTML with request.POST['[variable name]']
 
 ######Using Forms in HTML Templates:
-
+- Forms are called like variables, with {{[name of form].as_[name of display]}}
+- display options include form.as_table, form.as_p, etc.
 
 --------------------------------------------------------------------------------
 
@@ -359,3 +362,34 @@ Each template should begin as:
 ######HiddenInput:
 - widget in Form
 - Initialize in context dictionary in render()
+
+######Hash Password with BCrypt:
+This information is from [Django Docs on Password Management](https://docs.djangoproject.com/en/1.8/topics/auth/passwords/#module-django.contrib.auth.hashers).
+
+From the terminal with your Virtual Environment running, install the bcrypt library with:
+
+`pip3 install django[bcrypt]`
+
+Add the following to the settings.py file:
+```
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.SHA1PasswordHasher',
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+    'django.contrib.auth.hashers.CryptPasswordHasher',
+)
+```
+This modifies the existing PASSWORD_HASHERS to put the BCrypt entries first, thus making them the default. The others are still necessary so the database can check/upgrade existing passwords with them.
+
+Once complete, this should upgrade the existing passwords in your database. *Should it? It doesn't*
+
+`django.contrib.auth.hashers` is the module that includes the functions necessary to create a hash as a password, and check the password once it's created in order to verify the hashed password with the plaintext version.
+
+To use the moduel, add the following to the top of the file you're using to create your User instances with their passwords as an attribute:
+
+`from django.contrib.auth.hashers import make_password, check_password`
+
+Use the make_password() function in your model or elsewhere to save passwords as a hash instead of plaintext.
