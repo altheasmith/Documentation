@@ -1,8 +1,10 @@
 ###Guide to Creating a Django Project (OS X)
 
-Key: *(?Questions?)*
-
+```md
+Key:
+*(?Questions?)*
 #######Section In Progress
+```
 
 --------------------------------------------------------------------------------
 
@@ -262,7 +264,7 @@ To make edits with the server running, open another terminal window to the proje
 
 --------------------------------------------------------------------------------
 
-####Server Flow:
+####Data Flow:
 
 #####Create URL in urls.py:
 The urls.py should include:
@@ -349,11 +351,11 @@ Each template should begin as:
   ```
 
 
-######Using Variables in HTML Templates:
+#######Using Variables in HTML Templates:
 - Variables are called with {{[variable name]}}
 - Variables are pulled from HTML with request.POST['[variable name]']
 
-######Using Forms in HTML Templates:
+#######Using Forms in HTML Templates:
 - Forms are called like variables, with {{[name of form].as_[name of display]}}
 - display options include form.as_table, form.as_p, etc.
 
@@ -361,7 +363,7 @@ Each template should begin as:
 
 ####Other Specifics:
 
-######HiddenInput:
+#######HiddenInput:
 - widget in Form
 - Initialize in context dictionary in render()
 
