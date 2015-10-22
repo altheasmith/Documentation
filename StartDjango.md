@@ -1,8 +1,10 @@
 ###Guide to Creating a Django Project (OS X)
 
-Key: *(?Questions?)*
-
+```md
+Key:
+*(?Questions?)*
 #######Section In Progress
+```
 
 --------------------------------------------------------------------------------
 
@@ -262,7 +264,7 @@ To make edits with the server running, open another terminal window to the proje
 
 --------------------------------------------------------------------------------
 
-####Server Flow:
+####Data Flow:
 
 #####Create URL in urls.py:
 The urls.py should include:
