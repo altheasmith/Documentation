@@ -1,6 +1,8 @@
 ###Guide to Creating a Django Project (OS X)
 
-Key: (*Questions*)
+Key: *(?Questions?)*
+
+#######Section In Progress
 
 --------------------------------------------------------------------------------
 
@@ -213,7 +215,7 @@ Forms are built as classes inheriting from ModelForm:
   ```python
   class ComplimentForm(ModelForm):
   ```
-Their structure is stored in a secondary class: class Meta *(WHAT is Meta and why do we use it?)*
+Their structure is stored in a secondary class: class Meta *(?WHAT is Meta and why do we use it?)*
   ```python
   class ComplimentForm(ModelForm):
     class Meta:
@@ -302,7 +304,7 @@ Views are defined in views.py as functions:
     )
     return redirect('/compliments/{}'.format(user_id))
   ```
-The first argument is "request". *(WHY? and what does this do?)*
+The first argument is "request". *(?WHY? and what does this do?)*
 
 The rest are parameters/variables passed to the rendered html template (e.g. user_id).
 
@@ -314,13 +316,13 @@ Redirect is used when an action has been taken on the page.
 
 This requires the user to be redirected to another page after the action is complete.
 
-######Render:
+- Render:
 At the end of the view function, the render syntax is:
   ```python
   return render(request, '[app name]/[template name].html', {context dictionary: of passed parameters})
   ```
 
-######Redirect:
+- Redirect:
 At the end of the view function, the redirect syntax is:
   ```python
   return redirect('redirectto/thisurl')
@@ -359,7 +361,7 @@ Each template should begin as:
 
 ####Other Specifics:
 
-#####HiddenInput:
+######HiddenInput:
 - widget in Form
 - Initialize in context dictionary in render()
 
@@ -384,7 +386,7 @@ PASSWORD_HASHERS = (
 ```
 This modifies the existing PASSWORD_HASHERS to put the BCrypt entries first, thus making them the default. The others are still necessary so the database can check/upgrade existing passwords with them.
 
-Once complete, this should upgrade the existing passwords in your database. *Should it? It doesn't*
+Once complete, this should upgrade the existing passwords in your database. *(?Should it? It doesn't?)*
 
 `django.contrib.auth.hashers` is the module that includes the functions necessary to create a hash as a password, and check the password once it's created in order to verify the hashed password with the plaintext version.
 
