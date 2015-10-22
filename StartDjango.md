@@ -401,3 +401,13 @@ Use the make_password() function in your model or elsewhere to save passwords as
 Use the check_password() function to validate an entered password against its hashed equivalent.
 
   `check_password([entered password],[stored hashed password for user])`
+
+
+#####Sessions:
+This information is from the [Django Docs on Sessions](https://docs.djangoproject.com/en/1.8/topics/http/sessions/)
+
+Adding the following to the settings.py file will enable cookie-based sessions:
+
+`SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"`
+
+When SessionMiddleware is activated (the default is activated), each HTTPRequest object (e.g. the `request` variable passed in the `render()` functions in your views) has a `session` attribute which can be accessed with `request.session.` The `session` attribute is a dictionary-like object.
