@@ -1,3 +1,5 @@
+###Guide to Creating a Django Project (OS X)
+
 Key: (*Questions*)
 
 --------------------------------------------------------------------------------
@@ -81,7 +83,13 @@ Project name can be any combination of numbers, letters, and underscores
 
 
 #####Starting an Application:
-From a terminal window with your virtual environment activated, type:
+Navigate into the project folder with:
+
+  `cd [project name]`
+
+This folder contains the 'manage.py' file that you need to execute the command to start an app.
+
+From this terminal window, type:
 
   `python3 manage.py startapp [app name]`
 
@@ -229,7 +237,7 @@ Their structure is stored in a secondary class: class Meta *(WHAT is Meta and wh
 The fields included in the form are:
   1. The model being used to build the form;
   2. The fields or attributes of the model class;
-  3. Any widgets to be used in the form, e.g., HiddenInput() *(Still can't get HiddenInput working)*
+  3. Any widgets to be used in the form, e.g., HiddenInput()
 
 For example:
   ```python
@@ -309,7 +317,7 @@ At the end of the view function, the redirect syntax is:
   ```python
   return redirect('redirectto/thisurl')
   ```
-Redirect sends the process back through the urls -> views process to end with a rendered template.
+Instead of rendering a template directly, redirect sends the process back through the urls -> views process to end with a rendered template.
 
 
 #####HTML Templates:
@@ -338,3 +346,9 @@ Each template should begin as:
 
 
 --------------------------------------------------------------------------------
+
+####Other Specifics:
+
+######HiddenInput:
+- widget in Form
+- Initialize in context dictionary in render()
