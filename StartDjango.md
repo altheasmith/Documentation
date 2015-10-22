@@ -15,6 +15,13 @@ From a terminal window, enter:
 
 Postgres is a database which will exist in any regular development environment, but has to be initialized in Mac OS.
 
+######Configure Postgres to start Automagically:
+From [this site](http://exponential.io/blog/2015/02/21/install-postgresql-on-mac-os-x-via-brew/)
+  ```bash
+  mkdir -p ~/Library/LaunchAgents
+  ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+  ```
 
 #####Create Virtual Environment:
 From a terminal window in the directory where you want the Virtual Environment to exist, type:
@@ -225,7 +232,7 @@ For example:
             'user': HiddenInput(),
         }
   ```
-  
+
 --------------------------------------------------------------------------------
 
 ####Migrate & Run:
