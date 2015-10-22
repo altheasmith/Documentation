@@ -359,11 +359,11 @@ Each template should begin as:
 
 ####Other Specifics:
 
-######HiddenInput:
+#####HiddenInput:
 - widget in Form
 - Initialize in context dictionary in render()
 
-######Hash Password with BCrypt:
+#####Hash Password with BCrypt:
 This information is from [Django Docs on Password Management](https://docs.djangoproject.com/en/1.8/topics/auth/passwords/#module-django.contrib.auth.hashers).
 
 From the terminal with your Virtual Environment running, install the bcrypt library with:
@@ -388,7 +388,7 @@ Once complete, this should upgrade the existing passwords in your database. *Sho
 
 `django.contrib.auth.hashers` is the module that includes the functions necessary to create a hash as a password, and check the password once it's created in order to verify the hashed password with the plaintext version.
 
-To use the moduel, add the following to the top of the file you're using to create your User instances with their passwords as an attribute:
+To use the module, add the following to the top of the file you're using to create your User instances with their passwords as an attribute:
 
 `from django.contrib.auth.hashers import make_password, check_password`
 
