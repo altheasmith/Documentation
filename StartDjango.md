@@ -87,7 +87,7 @@ Navigate into the project folder with:
 
   `cd [project name]`
 
-This folder contains the 'manage.py' file that you need to execute the command to start an app.
+This directory contains the 'manage.py' file that you need to execute the command to start an app.
 
 From this terminal window, type:
 
@@ -102,7 +102,7 @@ App name can be any combination of numbers, letters, and underscores, and cannot
 
   Open the settings.py folder.
 
-  Add [app name] to the INSTALLED_APPS list and include a trailing comma.
+  Add '[app name]' to the INSTALLED_APPS list and include a trailing comma.
 
   ```python
   DATABASES:
