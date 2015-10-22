@@ -15,8 +15,8 @@ From a terminal window, enter:
 
 Postgres is a database which will exist in any regular development environment, but has to be initialized in Mac OS.
 
-######Configure Postgres to start Automagically:
-From [this site](http://exponential.io/blog/2015/02/21/install-postgresql-on-mac-os-x-via-brew/)
+######Configure Postgres to start Automagically on boot:
+From [this site](http://exponential.io/blog/2015/02/21/install-postgresql-on-mac-os-x-via-brew/):
   ```bash
   mkdir -p ~/Library/LaunchAgents
   ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
@@ -62,7 +62,7 @@ From a terminal window with your virtual environment activated, type:
 
   `pip3 install django`
 
-This is usually not necessary, as django-toolbelt will also install django:
+This is not necessary, as django-toolbelt will also install django:
 
   `pip3 install django-toolbelt`
 
@@ -347,10 +347,12 @@ Each template should begin as:
 
 
 ######Using Variables in HTML Templates:
-
+- Variables are called with {{[variable name]}}
+- Variables are pulled from HTML with request.POST['[variable name]']
 
 ######Using Forms in HTML Templates:
-
+- Forms are called like variables, with {{[name of form].as_[name of display]}}
+- display options include form.as_table, form.as_p, etc.
 
 --------------------------------------------------------------------------------
 
@@ -359,3 +361,22 @@ Each template should begin as:
 ######HiddenInput:
 - widget in Form
 - Initialize in context dictionary in render()
+
+######Hash Password with BCrypt:
+From the terminal with your Virtual Environment running, install the bcrypt library with:
+
+`pip3 install django[bcrypt]`
+
+Add the following to the settings.py file:
+```
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.SHA1PasswordHasher',
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+    'django.contrib.auth.hashers.CryptPasswordHasher',
+)
+```
+This modifies the existing PASSWORD_HASHERS to put the BCrypt entries first, thus making them the default.
