@@ -207,6 +207,7 @@ The forms.py file should always be headed by:
   ```python
   from django.forms import ModelForm
   ```
+
 All models to be used in forms should also be imported from [app name].models.
 
 Forms are built as classes inheriting from ModelForm:
@@ -233,6 +234,21 @@ For example:
             'user': HiddenInput(),
         }
   ```
+
+#####HiddenInput:
+The HiddenInput() function is imported from the same library as ModelForm. It can be accessed by changing the top line of the forms.py file to read:
+  ```python
+  from django.forms import ModelForm, HiddenInput
+  ```
+
+To use HiddenInput(), the fields to be hidden would have to be noted in the widget, like abocve. and initialized in the form when it is called in the context dictionary for a template being rendered.
+
+For example, the following view renders the url_shortener template with a context dictionary that calls the form, and initializes a value that is using HiddenInput(), with `[Name ofForm](initial={'[name of HiddenInput() field']:[field value]})`. In this case, the field value is created using the `get_url_id()`` function.
+
+```python
+def url_shortener(request):
+    return render(request, 'url/url_shortener.html', {'form':URLForm(initial={'url_identifier':get_url_id()})})
+```
 
 --------------------------------------------------------------------------------
 
