@@ -160,13 +160,11 @@ Alternatively, this file can be copied over from the main project folder:
 #####Create directory for html templates in new app folder:
 From the new app folder with virtual environment activated, type:
   ```bash
-  mkdir templates
-  cd templates
-  mkdir [app name]
+  mkdir -p templates/[app name]
   ```
 Move into this directory and create the necessary html files:
   ```bash
-  cd [app name]
+  cd templates/[app name]
   touch index.html
   ```
 
