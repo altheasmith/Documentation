@@ -114,9 +114,12 @@ There are many more settings applied to your project than what is in the setting
 
   Add '[app name]' to the INSTALLED_APPS list and include a trailing comma.
 
-  ```python
-  DATABASES:
+  `DATABASES:`
+
   Edit DATABASES to your local Postgres server:
+
+  ```python
+
     DATABASES = {
   	'default': {
   		'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -241,7 +244,7 @@ The HiddenInput() function is imported from the same library as ModelForm. It ca
   from django.forms import ModelForm, HiddenInput
   ```
 
-To use HiddenInput(), the fields to be hidden would have to be noted in the widget, like abocve. and initialized in the form when it is called in the context dictionary for a template being rendered.
+To use HiddenInput(), the fields to be hidden would have to be noted in the widget, like above. and initialized in the form when it is called in the context dictionary for a template being rendered.
 
 For example, the following view renders the url_shortener template with a context dictionary that calls the form, and initializes a value that is using HiddenInput(), with `[Name ofForm](initial={'[name of HiddenInput() field']:[field value]})`. In this case, the field value is created using the `get_url_id()`` function.
 
@@ -374,10 +377,6 @@ Each template should begin as:
 --------------------------------------------------------------------------------
 
 ####Other Specifics:
-
-#######HiddenInput:
-- widget in Form
-- Initialize in context dictionary in render()
 
 #####Hash Password with BCrypt:
 This information is from [Django Docs on Password Management](https://docs.djangoproject.com/en/1.8/topics/auth/passwords/#module-django.contrib.auth.hashers).
