@@ -1,14 +1,14 @@
-###Guide to Creating a Django Project (OS X)
+### Guide to Creating a Django Project (OS X)
 
 Key:
 *(?Questions?)*
-#######Section In Progress
+####### Section In Progress
 
 --------------------------------------------------------------------------------
 
-####Initial Setup:
+#### Initial Setup:
 
-#####Start Postgres from Terminal:
+##### Start Postgres from Terminal:
 (Only required after reboot since I closed the terminal window I used to install it initially.)
 
 From a terminal window, enter:
@@ -17,7 +17,7 @@ From a terminal window, enter:
 
 Postgres is a database which will exist in any regular development environment, but has to be initialized in Mac OS.
 
-######Configure Postgres to start Automagically on boot:
+###### Configure Postgres to start Automagically on boot:
 From [this site](http://exponential.io/blog/2015/02/21/install-postgresql-on-mac-os-x-via-brew/):
   ```bash
   mkdir -p ~/Library/LaunchAgents
@@ -25,7 +25,7 @@ From [this site](http://exponential.io/blog/2015/02/21/install-postgresql-on-mac
   launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
   ```
 
-#####Create Virtual Environment:
+##### Create Virtual Environment:
 From a terminal window in the directory where you want the Virtual Environment to exist, type:
 
   `python3 -m venv [your virtual environment name]`
@@ -33,7 +33,7 @@ From a terminal window in the directory where you want the Virtual Environment t
 Virtual environments are used to isolate the set of tools used by your app and the set of risks that opens up due to running your app, so that it is compartmentalized in your computer.
 
 
-#####Run Virtual Environment:
+##### Run Virtual Environment:
 From the same terminal window where your venv folder is, type:
 
   `source [your virtual environment name]/bin/activate`
@@ -41,13 +41,13 @@ From the same terminal window where your venv folder is, type:
 You will know its working when your terminal path starts with `([your virtual environment name])`
 
 
-#####Stop Virtual Environment:
+##### Stop Virtual Environment:
 From a terminal window where your venv folder is, type:
 
   `deactivate`
 
 
-#####Check Virtual Environment Installations:
+##### Check Virtual Environment Installations:
 From a terminal window with your virtual environment activated, type:
 
   `pip freeze`
@@ -59,7 +59,7 @@ Or:
 pip3 always uses python3, whereas pip will use the default version of python on the OS.
 
 
-#####Install Django:
+##### Install Django:
 From a terminal window with your virtual environment activated, type:
 
   `pip3 install django`
@@ -71,7 +71,7 @@ This is not necessary, as django-toolbelt will also install django:
 Other tools, if needed, can also be installed this way.
 
 
-#####Saving a virtual environment's installed programs:
+##### Saving a virtual environment's installed programs:
 From a terminal window with your virtual environment activated, type:
 
   `pip3 freeze > [name of requirements doc].txt`
@@ -83,7 +83,7 @@ This can then be used to install programs with:
 '-r' is the flag for a set of requirements in pip3 install
 
 
-#####Starting a Django Project:
+##### Starting a Django Project:
 From a terminal window with your virtual environment activated, type:
 
   `django-admin startproject [project name]`
@@ -91,7 +91,7 @@ From a terminal window with your virtual environment activated, type:
 Project name can be any combination of numbers, letters, and underscores
 
 
-#####Starting an Application:
+##### Starting an Application:
 Navigate into the project folder with:
 
   `cd [project name]`
@@ -105,7 +105,7 @@ From this terminal window, type:
 App name can be any combination of numbers, letters, and underscores, and cannot be the same as the project name or another app.
 
 
-#####Updating Settings:
+##### Updating Settings:
 There are many more settings applied to your project than what is in the settings.py folder of your project. This file is used to overwrite the settings you are changing from their default states/values.
 
   `INSTALLED_APPS:`
@@ -133,7 +133,7 @@ There are many more settings applied to your project than what is in the setting
   ```
 
 
-#####Create the database in Postgres:
+##### Create the database in Postgres:
 From a terminal window with your virtual environment activated, type:
 
   `createdb [name of database]`
@@ -141,16 +141,16 @@ From a terminal window with your virtual environment activated, type:
 This initializes the database within Postgres that will be used for your project.
 
 
-#####Delete the database in Postgres:
+##### Delete the database in Postgres:
 From a terminal window with your virtual environment activated, type:
 
   `dropdb [name of database]`
 
 --------------------------------------------------------------------------------
 
-####Create necessary files and directories:
+#### Create necessary files and directories:
 
-#####Create urls.py in the new app folder:
+##### Create urls.py in the new app folder:
 From the new app folder with virtual environment activated, type:
 
   `touch urls.py`
@@ -160,7 +160,7 @@ Alternatively, this file can be copied over from the main project folder:
   `cp [project name]/urls.py [app name]`
 
 
-#####Create directory for html templates in new app folder:
+##### Create directory for html templates in new app folder:
 From the new app folder with virtual environment activated, type:
   ```bash
   mkdir -p templates/[app name]
@@ -172,16 +172,16 @@ Move into this directory and create the necessary html files:
   ```
 
 
-#####Create forms.py in the new app folder:
+##### Create forms.py in the new app folder:
 From the new app folder with virtual environment activated, type:
 
   `touch forms.py`
 
 --------------------------------------------------------------------------------
 
-####Models & Forms:
+#### Models & Forms:
 
-#####Models:
+##### Models:
 The models.py file should always be headed by:
   ```python
   from django.db import models
@@ -205,7 +205,7 @@ E.g.:
 The field in the database is 'user_id'.
 
 
-#####Forms:
+##### Forms:
 The forms.py file should always be headed by:
   ```python
   from django.forms import ModelForm
@@ -238,7 +238,7 @@ For example:
         }
   ```
 
-#####HiddenInput:
+##### HiddenInput:
 The HiddenInput() function is imported from the same library as ModelForm. It can be accessed by changing the top line of the forms.py file to read:
   ```python
   from django.forms import ModelForm, HiddenInput
@@ -255,9 +255,9 @@ def url_shortener(request):
 
 --------------------------------------------------------------------------------
 
-####Migrate & Run:
+#### Migrate & Run:
 
-#####Once the model is created, Migrate:
+##### Once the model is created, Migrate:
 From a terminal window in the root folder with the virtual environment activated, type:
   ```bash
   python3 manage.py makemigrations [app name]
@@ -266,7 +266,7 @@ From a terminal window in the root folder with the virtual environment activated
 For both of these, the [app name] is optional - if it is provided it will makemigrations and migrate only that app, and if not, it will do the same for all apps int he project.
 
 
-#####Run the server:
+##### Run the server:
 From a terminal window in the root folder with the virtual environment activated, type:
 
   `python3 manage.py runserver`
@@ -279,9 +279,9 @@ To make edits with the server running, open another terminal window to the proje
 
 --------------------------------------------------------------------------------
 
-####Data Flow:
+#### Data Flow:
 
-#####Create URL in urls.py:
+##### Create URL in urls.py:
 The urls.py should include:
   ```python
   from django.conf.urls import include, url
@@ -306,7 +306,7 @@ The name is often the same as the name of the page.
 Always use a comma after every entry in urlpatterns = []
 
 
-#####Create View in views.py:
+##### Create View in views.py:
 The views.py file should always be headed by:
   ```python
   from django.shortcuts import render, redirect
@@ -347,7 +347,7 @@ At the end of the view function, the redirect syntax is:
 Instead of rendering a template directly, redirect sends the process back through the urls -> views process to end with a rendered template.
 
 
-#####HTML Templates:
+##### HTML Templates:
 Templates are written in HTML, but can include Python variables for added functionality.
 
 These variables are passed in the view functions as the third argument: the dictionary of parameters.
@@ -366,19 +366,19 @@ Each template should begin as:
   ```
 
 
-#######Using Variables in HTML Templates:
+####### Using Variables in HTML Templates:
 - Variables are called with {{[variable name]}}
 - Variables are pulled from HTML with request.POST['[variable name]']
 
-#######Using Forms in HTML Templates:
+####### Using Forms in HTML Templates:
 - Forms are called like variables, with {{[name of form].as_[name of display]}}
 - display options include form.as_table, form.as_p, etc.
 
 --------------------------------------------------------------------------------
 
-####Other Specifics:
+#### Other Specifics:
 
-#####Hash Password with BCrypt:
+##### Hash Password with BCrypt:
 This information is from [Django Docs on Password Management](https://docs.djangoproject.com/en/1.8/topics/auth/passwords/#module-django.contrib.auth.hashers).
 
 From the terminal with your Virtual Environment running, install the bcrypt library with:
@@ -416,7 +416,7 @@ Use the check_password() function to validate an entered password against its ha
   `check_password([entered password],[stored hashed password for user])`
 
 
-#####Sessions:
+##### Sessions:
 This information is from the [Django Docs on Sessions](https://docs.djangoproject.com/en/1.8/topics/http/sessions/)
 
 Adding the following to the settings.py file will enable cookie-based sessions:

@@ -1,10 +1,10 @@
-###Creating an Ubuntu 14.04 Virtual Machine with Vagrant to Use GeoDjango
+### Creating an Ubuntu 14.04 Virtual Machine with Vagrant to Use GeoDjango
 
-######Adapted from [vmenezes' and kaisaf's gearcircles](https://github.com/kaisaf/gearcircles/blob/master/instalation.txt)
+###### Adapted from [vmenezes' and kaisaf's gearcircles](https://github.com/kaisaf/gearcircles/blob/master/instalation.txt)
 
 Vagrant allows the user to work in Linux command line without needing to open a graphical virtual machine interface. ?CHECK VM REQS INSTALLATION?
 
-#####Create and Connect to Virtual Machine
+##### Create and Connect to Virtual Machine
 
 Install Vagrant and VirtualBox:
 ?ADD INSTALLATION?
@@ -24,7 +24,7 @@ Connect to the virtual machine:
 Now you are running an Ubuntu command line.
 
 
-#####Set Up Virtual Machine
+##### Set Up Virtual Machine
 
 Install VirtualEnv and Python:
 ```bash
@@ -65,7 +65,7 @@ Install GeoDjango Library Requirements:
 `$ sudo apt-get install libproj-dev gdal-bin`
 
 
-#####Set a virtual network interface with its own IP and a shared folder
+##### Set a virtual network interface with its own IP and a shared folder
 
 Exit and turn off your virtual machine:
 ```bash
